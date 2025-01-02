@@ -1,124 +1,3 @@
-/* General styling */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Orbitron', sans-serif;
-    overflow: hidden;
-    background: #000; /* Dark space background */
-    color: #fff; /* White text for readability */
-    text-align: center;
-}
-
-/* Container for small stars */
-.stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-/* Small stars */
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #fff;
-    border-radius: 50%;
-    animation: moveRandom 20s infinite ease-in-out;
-}
-
-.star.bright {
-    width: 3px;
-    height: 3px;
-    background: #ffffffaa;
-}
-
-/* Shooting stars container */
-#shooting-star-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-}
-
-/* Shooting stars */
-.shooting-star {
-    position: absolute;
-    width: 4px;
-    height: 80px;
-    background: linear-gradient(white, rgba(255, 69, 0, 0.3));
-    border-radius: 50%;
-    filter: blur(2px);
-    transform-origin: top left;
-}
-
-/* Roadmap content */
-.content {
-    position: relative;
-    z-index: 3;
-    padding: 20px;
-    margin-top: 20px;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin: 20px 0;
-    color: #d9d9d9; /* Space grey for a subtle, elegant look */
-}
-
-.roadmap-step {
-    background-color: rgba(20, 44, 71, 0.8);
-    padding: 20px;
-    margin: 50px auto; /* Spacing between steps */
-    width: 80%;
-    max-width: 600px; /* Limit max width for larger screens */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: #d9d9d9;
-    font-size: 1.2em;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-/* Hover effect for roadmap steps */
-.roadmap-step:hover {
-    background-color: rgba(50, 100, 150, 0.9);
-    transform: scale(1.05);
-}
-
-/* Animations */
-@keyframes moveRandom {
-    0% {
-        transform: translate(0, 0);
-    }
-    25% {
-        transform: translate(10px, -10px);
-    }
-    50% {
-        transform: translate(-10px, 10px);
-    }
-    75% {
-        transform: translate(15px, -5px);
-    }
-    100% {
-        transform: translate(0, 0);
-    }
-}
-
-@keyframes shoot {
-    0% {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(calc(100vw + 200px), calc(200vh + 400px));
-        opacity: 0;
-    }
-}
-
-/* Responsive Styles */
-
 /* For mobile devices (up to 600px) */
 @media (max-width: 600px) {
     body {
@@ -136,9 +15,14 @@ h1 {
         margin: 30px auto; /* Adjust spacing */
     }
 
-    /* Show stars on mobile */
+    /* Show stars and shooting stars on mobile */
     .stars {
         display: block;
+    }
+
+    /* Shooting star container visible on mobile */
+    #shooting-star-container {
+        display: block; /* Ensure shooting stars are not hidden */
     }
 
     /* Limit the number of stars for mobile */
@@ -159,26 +43,9 @@ h1 {
         display: none; /* Show only first 50 stars */
     }
 
-    /* Hide shooting stars for performance */
+    /* Reduce frequency of shooting stars */
     #shooting-star-container {
-        display: none;
+        display: block;
     }
 }
 
-/* For tablets (601px to 1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
-    h1 {
-        font-size: 2.2em; /* Medium heading for tablet */
-    }
-
-    .roadmap-step {
-        width: 85%; /* Slightly bigger steps on tablet */
-    }
-}
-
-/* For larger screens (desktops) */
-@media (min-width: 1025px) {
-    .roadmap-step {
-        width: 80%; /* Wider steps on larger screens */
-    }
-}
