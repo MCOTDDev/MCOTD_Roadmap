@@ -66,6 +66,3 @@ function createShootingStar() {
 const shootingStarInterval = isMobile ? 10000 : 7000; // Slow down shooting stars on mobile
 setInterval(createShootingStar, shootingStarInterval); // Adjust frequency of shooting stars
 
-const shootingStarInterval = isMobile ? 10000 : 7000; // Slow down shooting stars on mobile
-setInterval(createShootingStar, shootingStarInterval); // Adjust frequency of shooting stars
-
