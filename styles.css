@@ -136,8 +136,25 @@ h1 {
         margin: 30px auto; /* Adjust spacing */
     }
 
-    .stars, #shooting-star-container {
-        display: none; /* Disable star animation on mobile to save resources */
+    .stars {
+        display: block; /* Enable stars on mobile */
+    }
+
+    /* Limit the number of stars on mobile for performance */
+    .star {
+        width: 1.5px;
+        height: 1.5px;
+        animation-duration: 25s; /* Slower animation to reduce load */
+    }
+
+    .star.bright {
+        width: 2px;
+        height: 2px;
+    }
+
+    /* Hide shooting stars on mobile to improve performance */
+    #shooting-star-container {
+        display: none;
     }
 }
 
