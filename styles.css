@@ -136,23 +136,30 @@ h1 {
         margin: 30px auto; /* Adjust spacing */
     }
 
+    /* Show stars on mobile */
     .stars {
-        display: block; /* Enable stars on mobile */
+        display: block;
     }
 
-    /* Limit the number of stars on mobile for performance */
+    /* Limit the number of stars for mobile */
     .star {
         width: 1.5px;
         height: 1.5px;
         animation-duration: 25s; /* Slower animation to reduce load */
     }
 
+    /* Bright stars are smaller on mobile */
     .star.bright {
         width: 2px;
         height: 2px;
     }
 
-    /* Hide shooting stars on mobile to improve performance */
+    /* Limit number of stars */
+    .stars .star:nth-child(n+51) {
+        display: none; /* Show only first 50 stars */
+    }
+
+    /* Hide shooting stars for performance */
     #shooting-star-container {
         display: none;
     }
