@@ -1,7 +1,7 @@
-// Generate small stars with random positions and animations
+
 const starContainer = document.querySelector('.stars');
 
-// Check if the screen width is less than 600px (for mobile)
+
 const isMobile = window.innerWidth <= 600;
 
 const numberOfStars = isMobile ? 50 : 150; // Limit stars to 50 for mobile, 150 for desktop/tablet
@@ -17,34 +17,34 @@ for (let i = 0; i < numberOfStars; i++) {
     starContainer.appendChild(star);
 }
 
-// Generate shooting stars dynamically
+
 const shootingStarContainer = document.getElementById('shooting-star-container');
 
 function createShootingStar() {
     const shootingStar = document.createElement('div');
     shootingStar.classList.add('shooting-star');
 
-    // Randomize starting position along the top
+   
     const startX = Math.random() * 100; // Start position (viewport width percentage)
     const startY = -10; // Start above the viewport
     const endX = Math.random() * 100 + 100; // End far off-screen horizontally
     const endY = endX * 2; // Adjust slope here (currently y = 2x)
 
-    // Calculate the trajectory
+    
     const dx = endX - startX;
     const dy = endY - startY;
 
-    // Correct the angle calculation
+   
     const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 75; // Convert radians to degrees
 
-    // Set star position and rotation
+    
     shootingStar.style.top = `${startY}vh`;
     shootingStar.style.left = `${startX}vw`;
     shootingStar.style.transform = `rotate(${angle}deg)`; // Rotate star to align with trajectory
 
     shootingStarContainer.appendChild(shootingStar);
 
-    // Animate the star
+    
     shootingStar.animate(
         [
             { transform: `translate(0, 0) rotate(${angle}deg)`, opacity: 1 },
@@ -56,11 +56,13 @@ function createShootingStar() {
         }
     );
 
-    // Remove the star after animation ends
+   
     setTimeout(() => {
         shootingStar.remove();
     }, 5000);
 }
 
-// Trigger shooting stars at intervals
-setInterval(createShootingStar, 7000); // Adjust frequency of shooting stars
+
+const shootingStarInterval = isMobile ? 10000 : 7000; // Slow down shooting stars on mobile
+setInterval(createShootingStar, shootingStarInterval); // Adjust frequency of shooting stars
+
