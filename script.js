@@ -1,13 +1,19 @@
 // Generate small stars with random positions and animations
 const starContainer = document.querySelector('.stars');
-for (let i = 0; i < 150; i++) {
+
+// Check if the screen width is less than 600px (for mobile)
+const isMobile = window.innerWidth <= 600;
+
+const numberOfStars = isMobile ? 50 : 150; // Limit stars to 50 for mobile, 150 for desktop/tablet
+
+for (let i = 0; i < numberOfStars; i++) {
     const star = document.createElement('div');
     star.classList.add('star');
     if (Math.random() > 0.95) star.classList.add('bright'); // Brighter stars occasionally
-    star.style.top = `${Math.random() * 100}vh`;
-    star.style.left = `${Math.random() * 100}vw`;
+    star.style.top = `${Math.random() * 100}vh`; // Random vertical position
+    star.style.left = `${Math.random() * 100}vw`; // Random horizontal position
     star.style.animationDuration = `${Math.random() * 20 + 10}s`; // Random animation speed
-    star.style.animationDelay = `${Math.random() * 5}s`;
+    star.style.animationDelay = `${Math.random() * 5}s`; // Random delay for animation
     starContainer.appendChild(star);
 }
 
